@@ -173,6 +173,8 @@ pred1_df = pd.DataFrame(data = pred1)
 
 pred_output = model.predict(pred1_df)
 
+pred_prob = model.predict_proba(pred1_df)
+
 if pred_output == 1:
     result = "This Person is a LinkedIn user"
 else:
@@ -180,5 +182,7 @@ else:
 
 st.write(result)
 
+prob_result = 'The probability that they use LinkedIn is ' + str(round(pred_prob[0][1] * 100)) + '%'
 
+st.write(prob_result)
 
